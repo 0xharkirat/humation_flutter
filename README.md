@@ -14,6 +14,8 @@ Flutter, because part selection uses the same FNV-1a hash byte-for-byte.
 > endorsed by the Humation Labs team. The engine design and the artwork are
 > theirs (MIT); see [NOTICE](NOTICE).
 
+![Humation Flutter demo](.github/media/humation-demo.gif)
+
 ```dart
 import 'package:humation_flutter/humation_flutter.dart';
 
