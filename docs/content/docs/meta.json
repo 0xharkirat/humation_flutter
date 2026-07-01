@@ -1,0 +1,12 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "index",
+    "quick-start",
+    "installation",
+    "customizing",
+    "saving-and-exporting",
+    "packages",
+    "custom-packs"
+  ]
+}

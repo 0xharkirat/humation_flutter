@@ -1,0 +1,47 @@
+# Dart pub workspace root. Not published.
+# Resolves all packages together; run `flutter pub get` here once.
+name: humation_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+workspace:
+  - packages/humation
+  - packages/humation_assets_humation_1
+  - packages/humation_flutter
+  - packages/humation_flutter/example
+  - playground
+
+dev_dependencies:
+  melos: ^8.0.0
+
+melos:
+  scripts:
+    analyze:
+      description: Analyze every package.
+      exec:
+        command: dart analyze --fatal-infos
+        concurrency: 1
+
+    format:
+      description: Format-check the workspace.
+      run: dart format --output=none --set-exit-if-changed .
+
+    test:
+      description: Run the pure-Dart tests (humation core + assets).
+      exec:
+        command: dart test
+        concurrency: 1
+      packageFilters:
+        flutter: false
+        dirExists: test
+
+    test:flutter:
+      description: Run the Flutter tests (humation_flutter).
+      exec:
+        command: flutter test
+        concurrency: 1
+      packageFilters:
+        flutter: true
+        dirExists: test

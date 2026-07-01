@@ -1,0 +1,51 @@
+---
+title: Packages
+description: The three packages and how they fit together.
+---
+
+Humation Flutter is split into three packages so each piece can be used on its
+own. Most apps add only the first.
+
+| Package | Kind | Add it when |
+| --- | --- | --- |
+| `humation_flutter` | Flutter | You want the `HumationAvatar` widget. |
+| `humation` | pure Dart | You want the engine on a server or in a CLI (SVG output). |
+| `humation_assets_humation_1` | pure Dart data | You need the artwork: the 86-part `humation-1` pack. |
+
+```text
+humation  ◄── humation_assets_humation_1
+   ▲                  ▲
+   └────────┬─────────┘
+     humation_flutter   (bundles the default pack)
+```
+
+## Flutter app
+
+```bash
+flutter pub add humation_flutter
+```
+
+`humation_flutter` depends on the other two, so this one line is all you need in
+a Flutter app.
+
+## Dart on a server or in a CLI
+
+```bash
+dart pub add humation humation_assets_humation_1
+```
+
+```dart
+import 'package:humation/humation.dart';
+import 'package:humation_assets_humation_1/humation_assets_humation_1.dart';
+
+final svg = createAvatar(
+  humation1Manifest,
+  const CreateAvatarOptions(seed: 'felix'),
+).toSvg();
+```
+
+## Determinism
+
+Part selection uses the same FNV-1a hash as the reference engine, byte for byte,
+including for non-ASCII seeds. A user who set their avatar on the web sees the
+same avatar in your Flutter app.

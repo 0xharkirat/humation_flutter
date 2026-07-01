@@ -1,0 +1,71 @@
+---
+title: Saving and exporting
+description: Persist an avatar and export it as an image.
+---
+
+## Save a seeded avatar
+
+Store the seed. That is all you need to redraw the same avatar later:
+
+```dart
+final seed = user.id;
+// later
+HumationAvatar(seed: seed);
+```
+
+## Save a customized avatar
+
+If the user picked parts and colours, store those:
+
+```dart
+final avatar = createAvatar(
+  Humation.manifest,
+  const CreateAvatarOptions(
+    selections: {'head': 'wavy-medium'},
+    colors: {'hair': '4A3728'},
+  ),
+);
+
+final json = avatar.toJson(); // {selections, colors, background, crop}
+```
+
+Restore it from the saved map, including the background and crop:
+
+```dart
+HumationAvatar(
+  selections: (json['selections'] as Map).cast<String, String>(),
+  colors: (json['colors'] as Map).cast<String, String>(),
+  background: json['background'] as String,
+  crop: json['crop'] as String?,
+);
+```
+
+## Export a PNG
+
+Handy for sharing, notifications, or an `<img>` tag on the web:
+
+```dart
+final Uint8List? png = await Humation.pngForSeed(user.id, pixels: 256);
+```
+
+Or render any avatar you have built:
+
+```dart
+final data = createAvatar(
+  Humation.manifest,
+  const CreateAvatarOptions(seed: 'felix', background: 'FFFFFF'),
+).toRenderData();
+
+final png = await renderAvatarToPng(data, pixels: 512);
+```
+
+## Export an SVG
+
+The engine produces a self-contained SVG string:
+
+```dart
+final svg = createAvatar(
+  Humation.manifest,
+  const CreateAvatarOptions(seed: 'felix'),
+).toSvg();
+```

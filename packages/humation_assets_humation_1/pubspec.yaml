@@ -1,0 +1,25 @@
+name: humation_assets_humation_1
+description: >-
+  The humation-1 asset pack (86 hand-drawn SVG parts plus manifest) for the
+  humation avatar engine. Embedded as pure Dart, so it works on the server and
+  the web with no asset loading.
+version: 0.1.0
+repository: https://github.com/0xharkirat/humation_flutter
+homepage: https://github.com/0xharkirat/humation_flutter/tree/main/packages/humation_assets_humation_1
+issue_tracker: https://github.com/0xharkirat/humation_flutter/issues
+topics:
+  - avatar
+  - svg
+  - assets
+
+environment:
+  sdk: ^3.9.0
+
+resolution: workspace
+
+dependencies:
+  humation: ^0.1.0
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.0

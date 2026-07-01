@@ -1,0 +1,31 @@
+name: humation_flutter
+description: >-
+  Deterministic hand-drawn kawaii avatars for Flutter. One seed in, one avatar
+  out, rendered natively with CustomPainter. iOS, Android, web, and desktop.
+version: 0.1.0
+repository: https://github.com/0xharkirat/humation_flutter
+homepage: https://github.com/0xharkirat/humation_flutter/tree/main/packages/humation_flutter
+issue_tracker: https://github.com/0xharkirat/humation_flutter/issues
+topics:
+  - avatar
+  - svg
+  - identicon
+  - custompainter
+
+environment:
+  sdk: ^3.9.0
+  flutter: ">=3.27.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  humation: ^0.1.0
+  humation_assets_humation_1: ^0.1.0
+  xml: ^6.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0

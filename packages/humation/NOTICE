@@ -1,0 +1,16 @@
+Humation Flutter
+
+This project is a Dart and Flutter port of Humation.
+
+Engine design and the humation-1 asset set (86 SVG parts + manifest) are from:
+  humation-labs/humation            https://github.com/humation-labs/humation (MIT)
+
+The native rendering approach (SVG subset parsed to vector paths and composited,
+no web view) follows:
+  humation-labs/humation-swift       https://github.com/humation-labs/humation-swift (MIT)
+
+The bundled humation-1.json in packages/humation_assets_humation_1 is taken
+verbatim from the humation-swift resource, which was generated from
+@humation/assets-humation-1. Selection hashing (FNV-1a over UTF-16 code units)
+is byte-identical to the reference engine so the same seed yields the same
+avatar on web, native, and Flutter.

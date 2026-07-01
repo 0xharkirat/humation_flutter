@@ -1,0 +1,45 @@
+---
+title: Introduction
+description: The Flutter port of Humation. Deterministic, hand-drawn kawaii avatars, drawn natively.
+---
+
+**Humation Flutter** is the Flutter and Dart port of
+[Humation](https://humation.app), a deterministic hand-drawn avatar engine. Give
+it a seed, such as a user id, and it draws the same friendly avatar every time,
+natively on the Flutter canvas.
+
+![Avatars from different seeds](/img/avatars-grid.png)
+
+```dart
+HumationAvatar(seed: user.id, size: 96);
+```
+
+## Why use it
+
+- **Same seed, same avatar.** You store one short string (an id or email), not an
+  image. The avatar is identical on every device and platform.
+- **Drawn natively.** It renders on the Flutter canvas with a `CustomPainter`.
+  No web view, no network request, no AI. It works offline.
+- **Yours to style.** Pick parts and recolour with a line of code, or let a seed
+  choose for you.
+
+## A Flutter port, in three packages
+
+This is a faithful port of the reference TypeScript engine. Part selection is
+byte identical, so a user's avatar looks the same on your website and in your
+Flutter app. It ships as three packages:
+
+| Package | What it is |
+| --- | --- |
+| `humation_flutter` | The `HumationAvatar` widget and the native renderer. Add this in a Flutter app. |
+| `humation` | The engine. Pure Dart, no Flutter. Produces SVG. |
+| `humation_assets_humation_1` | The default artwork pack (86 hand-drawn parts). |
+
+Most apps add only `humation_flutter`; it includes the other two. See
+[Packages](/docs/packages).
+
+## Next
+
+- [Quick start](/docs/quick-start)
+- [Installation](/docs/installation)
+- [Customizing](/docs/customizing)

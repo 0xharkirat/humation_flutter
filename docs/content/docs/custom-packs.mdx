@@ -1,0 +1,44 @@
+---
+title: Custom art packs
+description: Render your own artwork.
+---
+
+Humation can render any pack that follows the manifest format, not only the
+bundled one. This is an advanced feature. Most apps use the default pack and can
+skip this page.
+
+## Use another pack
+
+`HumationAvatar` takes an optional `manifest`. Pass your own pack to draw your
+own art:
+
+```dart
+HumationAvatar(seed: user.id, manifest: myPack);
+```
+
+## Load a pack
+
+A pack is a manifest: its parts, their layers, and the SVG for each. Build one
+from JSON:
+
+```dart
+final pack = HumationManifest.fromJson(myJson);
+```
+
+## Validate a pack
+
+The renderer draws a subset of SVG. Validate authored artwork so you catch
+unsupported shapes early:
+
+```dart
+final issues = validateManifest(pack);
+if (issues.isEmpty) {
+  // every part will render
+} else {
+  for (final issue in issues) {
+    print(issue);
+  }
+}
+```
+
+An empty result means the pack is ready to render.

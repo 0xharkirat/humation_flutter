@@ -1,0 +1,44 @@
+---
+title: Installation
+description: Add Humation Flutter to your app.
+---
+
+## Flutter app
+
+Add the widget package:
+
+```bash
+flutter pub add humation_flutter
+```
+
+That is everything. It bundles the default artwork pack (86 parts), so there is
+nothing else to download or configure.
+
+Import it:
+
+```dart
+import 'package:humation_flutter/humation_flutter.dart';
+```
+
+## Dart only, no Flutter
+
+To generate avatars as SVG strings on a server or in a CLI, add the engine and an
+artwork pack instead:
+
+```bash
+dart pub add humation humation_assets_humation_1
+```
+
+See [Packages](/docs/packages) for how the three packages fit together.
+
+## Prewarm (optional)
+
+The artwork decodes once, the first time you show an avatar. Move that work off
+the first frame by calling `prewarm` in `main`:
+
+```dart
+void main() {
+  Humation.prewarm();
+  runApp(const MyApp());
+}
+```
