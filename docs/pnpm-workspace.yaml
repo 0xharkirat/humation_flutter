@@ -1,3 +1,6 @@
+packages:
+  - "."
+
 allowBuilds:
   esbuild: true # Required by Fumadocs MDX and TinaCMS for compilation
   sharp: true # Required by Next.js image processing
