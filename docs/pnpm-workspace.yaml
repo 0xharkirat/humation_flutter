@@ -6,4 +6,3 @@ allowBuilds:
   sharp: true # Required by Next.js image processing
   better-sqlite3: true # Required by TinaCMS search indexing
   core-js: false # Library still works; its postinstall only prints funding information
-  workerd: true # Required by wrangler / the Cloudflare Workers runtime
