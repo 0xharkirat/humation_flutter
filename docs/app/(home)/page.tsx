@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  description:
+    'Deterministic, hand-drawn kawaii avatars for Flutter. Give it a seed and it draws the same avatar every time, natively. No images to store, no network, no AI.',
+};
 
 // The playground is a separate Flutter web app, hosted on Firebase. Override
 // with NEXT_PUBLIC_PLAYGROUND_URL if you host it elsewhere.

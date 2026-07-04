@@ -35,10 +35,9 @@ the source of truth. Production is plain Fumadocs, so no Tina server is needed t
 serve the site.
 
 Regenerate the Tina client after changing the schema in `tina/config.ts`:
-
-```bash
-pnpm tina:build
-```
+restart `pnpm dev` (or run `pnpm build` once). Tina regenerates
+`tina/__generated__/` automatically as part of its own CLI lifecycle; there is
+no separate script for it.
 
 ## Build
 

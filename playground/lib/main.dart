@@ -89,7 +89,7 @@ class _BuilderPageState extends State<BuilderPage> {
   ).state;
 
   void _applySeed(String seed) {
-    final state = Humation.resolve(seed.isEmpty ? ' ' : seed);
+    final state = Humation.resolve(seed);
     setState(() {
       _selections = Map.of(state.selections);
       _colors = Map.of(state.colors);

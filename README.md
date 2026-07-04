@@ -1,5 +1,9 @@
 # humation_flutter
 
+[![pub package](https://img.shields.io/pub/v/humation_flutter.svg)](https://pub.dev/packages/humation_flutter)
+[![pub package](https://img.shields.io/pub/v/humation.svg)](https://pub.dev/packages/humation)
+[![pub package](https://img.shields.io/pub/v/humation_assets_humation_1.svg)](https://pub.dev/packages/humation_assets_humation_1)
+
 **Deterministic, hand-drawn kawaii avatars for Flutter and Dart.**
 One seed in, one avatar out. No AI, no network, no web view.
 
@@ -28,11 +32,11 @@ HumationAvatar(seed: user.id, size: 96);
 This repository is a melos monorepo with three published packages, split by
 concern rather than by platform. Each has a single job.
 
-| Package | Kind | Use it when |
-| --- | --- | --- |
-| [`humation`](packages/humation) | pure Dart | You want the engine on the server, in a CLI, or in a Dart-only app. It resolves a seed to parts and produces an SVG string. No Flutter. |
-| [`humation_assets_humation_1`](packages/humation_assets_humation_1) | pure Dart (data) | You need the actual artwork: the 86-part `humation-1` pack, embedded so it loads with no assets or files. |
-| [`humation_flutter`](packages/humation_flutter) | Flutter | You want the `HumationAvatar` widget. This is what most apps install. |
+| Package | pub.dev | Kind | Use it when |
+| --- | --- | --- | --- |
+| [`humation`](packages/humation) | [link](https://pub.dev/packages/humation) | pure Dart | You want the engine on the server, in a CLI, or in a Dart-only app. It resolves a seed to parts and produces an SVG string. No Flutter. |
+| [`humation_assets_humation_1`](packages/humation_assets_humation_1) | [link](https://pub.dev/packages/humation_assets_humation_1) | pure Dart (data) | You need the actual artwork: the 86-part `humation-1` pack, embedded so it loads with no assets or files. |
+| [`humation_flutter`](packages/humation_flutter) | [link](https://pub.dev/packages/humation_flutter) | Flutter | You want the `HumationAvatar` widget. This is what most apps install. |
 
 ### How they depend on each other
 
@@ -105,9 +109,10 @@ final bytes = await Humation.pngForSeed(user.id, pixels: 256);
 ## Example app
 
 [`packages/humation_flutter/example`](packages/humation_flutter/example) is a
-full avatar builder: live preview, seed gallery, per-slot part grid, colour
-swatches, and randomize. It is also the source for the web playground on the
-docs site.
+minimal usage demo: a seeded avatar and a custom selections-and-colours avatar,
+side by side. For a full avatar builder (live preview, part grid, colour
+swatches, randomize), see [`playground/`](playground), the app behind the web
+playground on the docs site.
 
 ```bash
 cd packages/humation_flutter/example

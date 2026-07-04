@@ -1,5 +1,7 @@
 # humation_flutter
 
+[![pub package](https://img.shields.io/pub/v/humation_flutter.svg)](https://pub.dev/packages/humation_flutter)
+
 **Deterministic, hand-drawn kawaii avatars for Flutter.**
 One seed in, one avatar out, rendered natively with `CustomPainter`. No web view,
 no network, no AI. Works on iOS, Android, web, and desktop.
@@ -7,6 +9,10 @@ no network, no AI. Works on iOS, Android, web, and desktop.
 A given seed always renders the same avatar, and it matches the reference
 [Humation](https://github.com/humation-labs/humation) web engine, so a user's
 avatar looks the same across your web and Flutter apps.
+
+Built on [`humation`](https://pub.dev/packages/humation) (the pure-Dart engine)
+and [`humation_assets_humation_1`](https://pub.dev/packages/humation_assets_humation_1)
+(the bundled artwork), both re-exported so you usually need only this package.
 
 > **Community port** by [Hark Singh](https://github.com/0xharkirat), not
 > affiliated with the Humation Labs team. The engine and artwork are from
@@ -116,8 +122,10 @@ any size.
 
 ## Example
 
-The [example app](example) is a full avatar builder: live preview, per-slot part
-grid, colour swatches, seed gallery, and randomize.
+The [example app](example) is a minimal usage demo: a seeded avatar and a
+custom selections-and-colours avatar. For a full avatar builder, see
+[`playground/`](https://github.com/0xharkirat/humation_flutter/tree/main/playground)
+in the repo.
 
 ## License
 

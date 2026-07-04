@@ -1,8 +1,12 @@
 # humation_flutter example
 
-A self-contained avatar builder: live preview, seed gallery, per-slot part grid,
-colour swatches, and randomize. It uses only `humation_flutter`, and it is the
-app embedded as the playground on the docs site.
+A minimal usage demo: a seeded avatar and a custom selections-and-colours
+avatar, side by side. Uses only `humation_flutter`.
+
+For a full avatar builder (live preview, part grid, colour swatches,
+randomize), see
+[`playground/`](https://github.com/0xharkirat/humation_flutter/tree/main/playground)
+in the repo, the app behind the web playground on the docs site.
 
 ```bash
 flutter run            # a connected device or simulator

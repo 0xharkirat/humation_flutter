@@ -82,7 +82,7 @@ class HumationAvatar extends StatelessWidget {
               seed: seed,
               selections: selections,
               colors: humationHexColors(colors),
-              background: background ?? 'transparent',
+              background: background ?? pack.defaults.background,
               crop: crop,
             ),
           );

@@ -149,6 +149,18 @@ void main() {
       expect(svg, contains('<rect'));
       expect(svg, contains('fill="#FFFFFF"'));
     });
+
+    test('escapes an unusual background value in the fill attribute', () {
+      // AvatarState.fromState lets a caller (an editor holding a draft state)
+      // pass an unnormalised background straight through. The rect's fill
+      // attribute must escape it like every other interpolation in this file.
+      final state = createAvatar(
+        manifest,
+      ).state.copyWith(background: '000000" x="9999');
+      final svg = HumationAvatar.fromState(manifest, state).toSvg();
+      expect(svg, isNot(contains('x="9999"')));
+      expect(svg, contains('fill="#000000&quot; x=&quot;9999"'));
+    });
   });
 
   test('toRenderData orders fragments back-to-front', () {

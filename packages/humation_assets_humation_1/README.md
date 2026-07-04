@@ -1,5 +1,7 @@
 # humation_assets_humation_1
 
+[![pub package](https://img.shields.io/pub/v/humation_assets_humation_1.svg)](https://pub.dev/packages/humation_assets_humation_1)
+
 The **humation-1** asset pack for the [Humation](https://pub.dev/packages/humation)
 avatar engine: 86 hand-drawn SVG parts plus the manifest that describes them.
 

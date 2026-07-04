@@ -86,6 +86,7 @@ core.AvatarRenderData _previewData(
 }) {
   final resolved = <String, String>{
     for (final slot in pack.colors) slot.id: slot.defaultHex,
+    ...pack.defaults.colors,
     ...?colors,
   };
 

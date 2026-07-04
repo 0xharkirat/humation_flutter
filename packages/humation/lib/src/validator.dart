@@ -19,10 +19,12 @@ class ValidationIssue {
 
 /// Validate every part against what the native renderer implements.
 ///
-/// An empty result means the pack is renderable. This catches the two ways an
-/// authored pack can render wrong: unresolved structural references (unknown
-/// selection or layer slots) and SVG path commands the renderer does not
-/// implement (arcs `A`/`a`, quadratics `Q`/`q`/`T`/`t`).
+/// This catches two ways an authored pack can render wrong: unresolved
+/// structural references (unknown selection or layer slots) and SVG path
+/// commands the renderer does not implement (arcs `A`/`a`, quadratics
+/// `Q`/`q`/`T`/`t`). An empty result means these checks passed; this is not a
+/// full SVG parse, so unsupported elements or transform syntax outside path
+/// data are not detected.
 List<ValidationIssue> validateManifest(HumationManifest manifest) {
   final issues = <ValidationIssue>[];
   final slotIds = manifest.selectionSlots.map((s) => s.id).toSet();
@@ -56,12 +58,20 @@ List<ValidationIssue> validateManifest(HumationManifest manifest) {
   return issues;
 }
 
-/// Extract the value of every `d="..."` attribute in an SVG fragment.
+/// Extract the value of every `d="..."` or `d='...'` attribute in an SVG
+/// fragment. Matches both quote styles since authored (non-embedded) SVG
+/// commonly uses single quotes.
+///
+/// The leading `(?<![\w-])` boundary stops this from matching inside another
+/// attribute that merely ends in "d" (`id="..."`, or any future `*-d="..."`)
+/// as if it were a path's `d` attribute. `[\s\S]` (rather than `.`) spans
+/// line breaks, so a hand-formatted multiline `d` value is still captured
+/// whole instead of silently matching zero times.
 List<String> _pathData(String svg) {
   final result = <String>[];
-  final pattern = RegExp('d="([^"]*)"');
+  final pattern = RegExp(r'''(?<![\w-])d=(["'])((?:(?!\1)[\s\S])*)\1''');
   for (final match in pattern.allMatches(svg)) {
-    result.add(match.group(1) ?? '');
+    result.add(match.group(2) ?? '');
   }
   return result;
 }

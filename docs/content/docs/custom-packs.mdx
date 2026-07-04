@@ -27,13 +27,14 @@ final pack = HumationManifest.fromJson(myJson);
 
 ## Validate a pack
 
-The renderer draws a subset of SVG. Validate authored artwork so you catch
-unsupported shapes early:
+The renderer draws a subset of SVG. Validate authored artwork so you catch two
+common mistakes early: unresolved slot references and unsupported path
+commands (arcs, quadratics):
 
 ```dart
 final issues = validateManifest(pack);
 if (issues.isEmpty) {
-  // every part will render
+  // slot references resolve and no unsupported path commands were found
 } else {
   for (final issue in issues) {
     print(issue);
@@ -41,4 +42,4 @@ if (issues.isEmpty) {
 }
 ```
 
-An empty result means the pack is ready to render.
+An empty result is not a full SVG parse, so still test render your parts.

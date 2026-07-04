@@ -1,5 +1,7 @@
 # humation
 
+[![pub package](https://img.shields.io/pub/v/humation.svg)](https://pub.dev/packages/humation)
+
 **Deterministic hand-drawn kawaii avatar engine for Dart.**
 Pure Dart, no Flutter, no network, no AI. One seed in, one avatar out.
 
@@ -62,8 +64,9 @@ properties. Serve it, write it to a file, or hand it to a browser.
 - `resolvePartId(input, manifest, slotId: ...)` resolves ids, aliases, and
   slot-scoped names.
 - `getPartsForSlot` / `getPartsForUiGroup` list parts for pickers.
-- `validateManifest(manifest)` lints a custom pack against the supported SVG
-  subset. An empty result means it is renderable.
+- `validateManifest(manifest)` checks slot references and flags unsupported
+  path commands (arcs, quadratics). An empty result means those checks passed;
+  it is not a full SVG parse.
 - `fnv1a` and `normalizeHex` are the shared primitives.
 
 `toRenderData()` returns an `AvatarRenderData` (view box, background, colours,

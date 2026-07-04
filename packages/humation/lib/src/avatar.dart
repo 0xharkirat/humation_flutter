@@ -44,7 +44,7 @@ class HumationAvatar {
         ? ''
         : '<rect x="${_num(viewBox.x)}" y="${_num(viewBox.y)}" '
               'width="${_num(viewBox.width)}" height="${_num(viewBox.height)}" '
-              'fill="#$background" />';
+              'fill="#${_escape(background)}" />';
     final content = fragments.map(_renderFragment).join();
 
     return '<svg xmlns="http://www.w3.org/2000/svg" '
